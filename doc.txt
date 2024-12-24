@@ -1,0 +1,173 @@
+INSTALL COMMAND: npx create-react-app my-app
+Start server: npm start
+Create Production Build: npm run build
+
+Overview: 
+    public/ – Contains the index.html file and other assets (images, etc.).
+    src/ – Contains the main React components and JavaScript code.
+    src/App.js – The main component of the app.
+    src/index.js – The entry point of the app, where ReactDOM renders the app to the HTML.
+    package.json – Contains metadata about the project and its dependencies.
+
+Basics:
+1. Component : components are js functions/classes that return HTML(JSX)
+
+2. JSX (JavaScript XML) : It is HTML-like syntax inside JavaScript
+    eg: const element = <h1>Hello, World!</h1>;
+
+3. Functional Component Example : 
+    import React from 'react';
+
+    function Welcome() {
+    return <h1>Hello, Welcome to React!</h1>;
+    }
+
+    export default Welcome;
+
+4. Props(properties) : how data is passed into React components
+    function Welcome(props) {
+    return <h1>Hello, {props.name}!</h1>;
+    }
+
+    export default Welcome;
+
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import Welcome from './Welcome';
+
+    ReactDOM.render(
+    <Welcome name="John" />,
+    document.getElementById('root')
+    );
+
+5. State in React : State is used to store data that can change over time
+    'useState' Hook is used to manage state.
+
+    import React, { useState } from 'react';
+
+    function Counter() {
+    // Declare a state variable "count" with a default value of 0
+    const [count, setCount] = useState(0);
+
+    return (
+        <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>Click me</button>
+        </div>
+    );
+    }
+
+    export default Counter;
+
+6. Event Handling : Handle events like clicks, changes, etc. pass event handlers as props.
+    import React, { useState } from 'react';
+
+    function Button() {
+    const [message, setMessage] = useState("Click the button");
+
+    function handleClick() {
+        setMessage("Button clicked!");
+    }
+
+    return (
+        <div>
+        <p>{message}</p>
+        <button onClick={handleClick}>Click me</button>
+        </div>
+    );
+    }
+
+    export default Button;
+
+7. Conditional Rendering : Render parts of component based on conditions.
+    function Greeting({ isLoggedIn }) {
+        return (
+            <h1>{isLoggedIn ? 'Welcome back!' : 'Please log in.'}</h1>
+        );
+    }
+
+8. Lists and Keys : list of items render dynamically in react using map. 
+    Each item should have unique key prop for efficient rendering.
+
+    function List(){
+        const items = ['apple', 'cake', 'mango'];
+
+        return(
+            <ul>
+            {
+                items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))
+            }
+            </ul>
+        )
+    }
+
+    export default List;
+
+9. useEffect Hook : perform side effects in functional components, like fetching data or updating the document title
+    
+    useEffect sets up a timer that updates the state seconds every second.
+    clearInterval function ensures the timer is cleaned up when the component is removed from the DOM.
+
+    import React, { useState, useEffect } from 'react';
+
+    function Timer() {
+    const [seconds, setSeconds] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+        setSeconds(prevSeconds => prevSeconds + 1);
+        }, 1000);
+
+        // Clean up the interval when the component unmounts
+        return () => clearInterval(interval);
+    }, []); // The empty array means this effect runs once, after the first render
+
+    return <p>Time: {seconds}s</p>;
+    }
+
+    export default Timer;
+
+10. Forms and Controlled Components : manage form elements (like inputs) 
+
+    inputValue state is used to control the value of the input field.
+    handleSubmit function handles the form submission.
+
+    import React, { useState } from 'react';
+
+    function MyForm() {
+    const [inputValue, setInputValue] = useState('');
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        alert(`You entered: ${inputValue}`);
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+        <input 
+            type="text" 
+            value={inputValue} 
+            onChange={handleChange} 
+        />
+        <button type="submit">Submit</button>
+        </form>
+    );
+    }
+
+    export default MyForm;
+
+Summary of Key Concepts:
+    Components: Building blocks of a React app (either functional or class-based).
+    JSX: Syntax that mixes HTML with JavaScript.
+    Props: Data passed into components.
+    State: Data that changes over time inside a component.
+    Event Handling: React’s way to handle user interactions.
+    useEffect: Hook to handle side effects (like data fetching, timers).
+    Conditional Rendering: Rendering elements based on conditions.
+    Controlled Components: Managing form elements with React state.

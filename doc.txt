@@ -162,6 +162,9 @@ Basics:
 
     export default MyForm;
 
+11. Rendering an Element into the DOM : 
+“root” DOM node because everything inside it will be managed by React DOM.
+
 Summary of Key Concepts:
     Components: Building blocks of a React app (either functional or class-based).
     JSX: Syntax that mixes HTML with JavaScript.

@@ -2,6 +2,8 @@
 // JSX: It is a HTML, used to render in js
 
 import './App.css';
+import Count from './counter';
+// import diffCount from './diffCounter';
 
 function App() {
   function handleClick(){
@@ -39,14 +41,30 @@ function App() {
   //   <h1>Hello, Stranger</h1>
   // }
 
+  const isLoggedIn = false;
+  function loginCheck(isLoggedIn){
+    // if(isLoggedIn){
+    //   return <p>Dashboard!</p>;
+    // }else{
+    //   return <p>LoginForm</p>;
+    // }
+    return isLoggedIn ? <p>Dash board!</p> : <p>Login Form</p>;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <button onClick={handleClick}>Click Me</button>
         {element}
         <p>My name is {userDetails(user)}</p>
+        <p>{loginCheck(isLoggedIn)}</p>
+
+        {/* Call the component of another file */}
+        <Count />
+       
       </header>
     </div>
+    
   );
 }
 

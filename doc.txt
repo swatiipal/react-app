@@ -174,3 +174,7 @@ Summary of Key Concepts:
     useEffect: Hook to handle side effects (like data fetching, timers).
     Conditional Rendering: Rendering elements based on conditions.
     Controlled Components: Managing form elements with React state.
+
+Self-Learning & Research: 
+Learning React key concepts (approaches of using JSX and elements, Props, 
+State, Event Handling)
